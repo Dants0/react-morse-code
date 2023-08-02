@@ -1,59 +1,59 @@
-export interface MorseProps{
+export interface MorseProps {
   letter: string
   number: number
   phrase: string
 }
 
-export class MorseModule{
+export class MorseModule {
   private letter: string
   private number: number
   private phrase: string
 
   constructor({
     letter, number, phrase
-  }:MorseProps){
+  }: MorseProps) {
     this.letter = letter
     this.number = number
     this.phrase = phrase
   }
 
-  private HashMorseTable: {[key: string]: string} = {
-    'A': '. -',
-    'B': '- . . .',
-    'C': '- . - .',
-    'D': '- . .',
+  private HashMorseTable: { [key: string]: string } = {
+    'A': '.-',
+    'B': '-...',
+    'C': '-.-.',
+    'D': '-..',
     'E': '.',
-    'F': '. . - .',
-    'G': '- - .',
-    'H': '. . . .',
-    'I': '. .',
-    'J': '. - - -',
-    'K': '- . -',
-    'L': '. - . .',
-    'M': '- -',
-    'N': '- .',
-    'O': '- - -',
-    'P': '. - - .',
-    'Q': '- - . -',
-    'R': '. - .',
-    'S': '. . .',
+    'F': '..-.',
+    'G': '--.',
+    'H': '....',
+    'I': '..',
+    'J': '.---',
+    'K': '-.-',
+    'L': '.-..',
+    'M': '--',
+    'N': '-.',
+    'O': '---',
+    'P': '.--.',
+    'Q': '--.-',
+    'R': '.-.',
+    'S': '...',
     'T': '-',
-    'U': '. . -',
-    'V': '. . . -',
-    'W': '. - -',
-    'X': '- . . -',
-    'Y': '- . - -',
-    'Z': '- - . .',
-    1: '. - - - -',
-    2: '. . - - -',
-    3: '. . . - - -',
-    4: '. . . . -',
-    5: '. . . . .',
-    6: '- . . . .',
-    7: '- - . . .',
-    8: '- - - . .',
-    9: '- - - - .',
-    0: '- - - - -'
+    'U': '..-',
+    'V': '...-',
+    'W': '.--',
+    'X': '-..-',
+    'Y': '-.--',
+    'Z': '--..',
+    1: '.----',
+    2: '..---',
+    3: '...--',
+    4: '....-',
+    5: '.....',
+    6: '-....',
+    7: '--...',
+    8: '---..',
+    9: '----.',
+    0: '-----'
   }
 
   private convertLetterToMorse(letter: string): string {
@@ -69,20 +69,20 @@ export class MorseModule{
     const char = word.toUpperCase().split('')
     const patternToLetter = /^[A-Z]/
     const patternToIntNumber = /^\d$/
-    const morseWords = char.map((word) =>{
-      if(patternToLetter.test(word)){
+    const morseWords = char.map((word) => {
+      if (patternToLetter.test(word)) {
         return this.convertLetterToMorse(word)
-      }else if(patternToIntNumber.test(word)){
+      } else if (patternToIntNumber.test(word)) {
         return this.convertNumberToMorse(parseInt(word))
-      }else{
-        throw new Error (`It's not possible convert to morse because anyone paramethers will be satisfied.`)
+      } else {
+        throw new Error(`It's not possible convert to morse because anyone paramethers will be satisfied.`)
       }
     })
-    return morseWords.join(' ')
+    return morseWords.join('')
   }
 
   public convertPhraseToMorse(phrase: string): string {
-    const words = phrase.trim().split(' ')
+    const words = phrase.trim().split('')
     const morseLetters = words.map((word) => this.convertWordToMorse(word))
     return morseLetters.join(' / ')
   }
@@ -91,13 +91,13 @@ export class MorseModule{
     const morseLetter = this.convertLetterToMorse(this.letter)
     return `${morseLetter}`
   }
-  
+
   public convertOnlyNumberToMorse(): string {
     const morseNumber = this.convertNumberToMorse(this.number)
     return `${morseNumber}`
   }
 
-  public convertToMorse(): string{
+  public convertToMorse(): string {
     const morseLetter = this.convertLetterToMorse(this.letter)
     const morseNumber = this.convertNumberToMorse(this.number)
     return `${morseLetter} | ${morseNumber}`

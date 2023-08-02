@@ -1,9 +1,9 @@
 {
   "name": "react-morse-code",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "A lightweight JavaScript utility to encode and decode text using Morse code.",
   "license": "MIT",
-  "main": "Morse.js",
+  "main": "MorseModule.js",
   "keywords": [
     "morse code",
     "utils",
