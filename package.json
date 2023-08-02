@@ -13,7 +13,7 @@
   "author": "@dants0",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/Dants0/react-morse-code.git"
   },
   "scripts": {
     "build": "tsc",
